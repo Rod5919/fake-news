@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Proyecto Demo Day</title>
+        <script type="text/javascript" src="brython.js"></script>
+        <script type="text/javascript" src="brython_stdlib.js"></script>
+</head>
+<body onload="brython()">
+    <header>
+        <h1>Proyecto Demo Day</h1>
+    </header>
+    <main>
+        <h2>Ingrese una noticia</h2>
+        <button id='Alert_btn'>Alert</button>
+        <button id='Change_btn'>Change text</button>
+        <p id="text">Hello</p>
+    </main>
+    <footer>
+        <h2>Integrantes</h2>
+        <ul>
+            <li>Abril Sherman</li>
+            <li>Alejandro Nuñez</li>
+            <li>Sergio Fernandez</li>
+            <li>Silvia Ontiveros</li>
+        </ul>
+    </footer>
+</body>
+<script type="text/python">
+flag = False
+from browser import document, alert
+
+def hello(ev):
+    alert("Hello!")
+
+def change(event):
+    global flag
+    if flag:
+        document["text"].textContent = "Hello"
+        flag = False
+    else:
+        document["text"].textContent = "Hello world"
+        flag = True
+
+document["Alert_btn"].bind("click", hello)
+document["Change_btn"].bind("click", change)
+    </script>
+</html>
