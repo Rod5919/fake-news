@@ -15,7 +15,9 @@
         <h2>Ingrese una noticia</h2>
         <button id='Alert_btn'>Alert</button>
         <button id='Change_btn'>Change text</button>
+        <button id='Import_fake_btn'>Import Fake</button>
         <p id="text">Hello</p>
+        <p id="sheet"></p>
     </main>
     <footer>
         <h2>Integrantes</h2>
@@ -28,10 +30,14 @@
     </footer>
 </body>
 <script type="text/python">
+import pandas as pd
+
+df = pd.read_csv("fake.csv")
+
 flag = False
 from browser import document, alert
 
-def hello(ev):
+def hello(event):
     alert("Hello!")
 
 def change(event):
@@ -43,7 +49,11 @@ def change(event):
         document["text"].textContent = "Hello world"
         flag = True
 
+def change(event):
+    document["sheet"].textContent = str(df)
+
 document["Alert_btn"].bind("click", hello)
 document["Change_btn"].bind("click", change)
+document["Import_fake_btn"].bind("click", change)
     </script>
 </html>
